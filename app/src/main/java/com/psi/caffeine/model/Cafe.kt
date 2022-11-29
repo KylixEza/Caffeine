@@ -7,5 +7,7 @@ data class Cafe(
     val location: String,
     val image: String,
     val rating: Double,
-    val distance: Double
+    val distance: Double,
+    val openTime: String,
+    val closeTIme: String
 )
