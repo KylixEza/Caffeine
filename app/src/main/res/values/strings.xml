@@ -5,4 +5,7 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="see_al">Lihat Semua</string>
+    <string name="recommendation_for_you">Rekomendasi Untukmu</string>
+    <string name="closest_cafe">Kafe Terdekat</string>
 </resources>
