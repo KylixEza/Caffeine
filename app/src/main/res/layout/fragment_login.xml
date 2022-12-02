@@ -88,12 +88,12 @@
         app:layout_constraintEnd_toEndOf="@id/edt_password"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_register"
+        android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="42dp"
         android:fontFamily="@font/lexend"
-        android:text="@string/register"
+        android:text="@string/login"
         android:textAllCaps="false"
         app:cornerRadius="32dp"
         app:layout_constraintEnd_toEndOf="@id/edt_password"

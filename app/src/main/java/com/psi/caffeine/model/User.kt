@@ -16,5 +16,7 @@ data class User(
     @ColumnInfo(name = "password")
     val password: String,
     @ColumnInfo(name = "avatar_url")
-    val avatarUrl: String
+    val avatarUrl: String,
+    @ColumnInfo(name = "is_admin")
+    val isAdmin: Boolean
 )

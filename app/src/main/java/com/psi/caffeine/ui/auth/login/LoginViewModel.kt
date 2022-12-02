@@ -1,7 +1,15 @@
 package com.psi.caffeine.ui.auth.login
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.asLiveData
+import com.psi.caffeine.data.CaffeineDatabase
 
-class LoginViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class LoginViewModel(
+    application: Application
+) : AndroidViewModel(application) {
+    
+    private val dao = CaffeineDatabase.getInstance(application).caffeineDao()
+    
+    fun login(username: String, password: String) = dao.getUser(username, password)?.asLiveData()
 }

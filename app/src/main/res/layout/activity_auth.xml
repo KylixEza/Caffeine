@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".ui.auth.AuthActivity">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_auth"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.psi.caffeine.ui.auth.login.LoginFragment"
+        tools:layout="@layout/fragment_login" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
