@@ -99,4 +99,8 @@ object Dummy {
         )
     )
     
+    fun getDetailCafe(cafeId: String) = run {
+        val cafes = recommendationCafe() + getClosestCafe()
+        cafes.find { it.cafeId == cafeId }
+    }
 }
