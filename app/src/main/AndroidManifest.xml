@@ -14,7 +14,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Caffeine">
         <activity
-            android:name=".AdminHomeActivity"
+            android:name=".admin_ui.add.AdminAddActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".admin_ui.edit.AdminEditActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".admin_ui.home.AdminHomeActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

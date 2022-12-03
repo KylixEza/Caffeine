@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.commit
 import androidx.lifecycle.ViewModelProvider
 import com.psi.caffeine.R
+import com.psi.caffeine.admin_ui.home.AdminHomeActivity
 import com.psi.caffeine.databinding.FragmentLoginBinding
 import com.psi.caffeine.ui.auth.register.RegisterFragment
 import com.psi.caffeine.ui.main.MainActivity
@@ -40,9 +41,15 @@ class LoginFragment : Fragment() {
                 val password = tilPassword.text.toString()
                 viewModel.login(username, password)?.observe(viewLifecycleOwner) {
                     if (it != null) {
-                        val intent = Intent(requireContext(), MainActivity::class.java)
-                        startActivity(intent)
-                        activity?.finish()
+                        if (it.isAdmin) {
+                            val intent = Intent(activity, AdminHomeActivity::class.java)
+                            startActivity(intent)
+                            activity?.finish()
+                        } else {
+                            val intent = Intent(activity, MainActivity::class.java)
+                            startActivity(intent)
+                            activity?.finish()
+                        }
                     } else {
                         Toast.makeText(requireContext(), "Invalid username or password", Toast.LENGTH_SHORT).show()
                     }

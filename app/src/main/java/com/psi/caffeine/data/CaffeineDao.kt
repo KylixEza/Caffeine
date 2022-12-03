@@ -1,7 +1,6 @@
 package com.psi.caffeine.data
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
@@ -12,9 +11,12 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CaffeineDao {
-    
+    //user
     @Insert
     suspend fun insertUser(user: User)
+    
+    @Insert
+    fun insertInitialUsers(vararg users: User)
 
     @Query("SELECT EXISTS(SELECT * FROM user WHERE email = :email)")
     fun isEmailExist(email: String): Flow<Boolean>

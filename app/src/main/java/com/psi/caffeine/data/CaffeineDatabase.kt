@@ -55,6 +55,7 @@ abstract class CaffeineDatabase: RoomDatabase() {
                                             )
                                         )
                                     }
+                                    
                                     fillWithStartingData(
                                         context.applicationContext, R.raw.menu, "menus"
                                     ) { item ->
@@ -66,6 +67,21 @@ abstract class CaffeineDatabase: RoomDatabase() {
                                                 item.getString("type"),
                                                 item.getString("image"),
                                                 item.getBoolean("isHalal")
+                                            )
+                                        )
+                                    }
+                                    
+                                    fillWithStartingData(
+                                        context.applicationContext, R.raw.user, "users"
+                                    ) { item ->
+                                        caffeineDatabase.caffeineDao().insertInitialUsers(
+                                            User(
+                                                item.getString("uid"),
+                                                item.getString("username"),
+                                                item.getString("email"),
+                                                item.getString("password"),
+                                                item.getString("avatarUrl"),
+                                                item.getBoolean("isAdmin")
                                             )
                                         )
                                     }

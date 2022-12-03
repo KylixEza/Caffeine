@@ -8,11 +8,11 @@ import androidx.room.PrimaryKey
 data class Cafe(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "cafe_id")
-    val cafeId: Int,
+    val cafeId: Int = 0,
     @ColumnInfo(name = "cafe_name")
-    val cafeName: String,
+    var cafeName: String,
     @ColumnInfo(name = "description")
-    val description: String,
+    var description: String,
     @ColumnInfo(name = "location")
     val location: String,
     @ColumnInfo(name = "image")
