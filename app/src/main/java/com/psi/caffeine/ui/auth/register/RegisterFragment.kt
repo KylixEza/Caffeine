@@ -19,6 +19,8 @@ class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding
     
+    private var isFromSuccessRegister = false
+    
     private lateinit var viewModel: RegisterViewModel
     
     override fun onCreateView(
@@ -51,8 +53,10 @@ class RegisterFragment : Fragment() {
     
                 viewModel.isEmailExist(email).observe(viewLifecycleOwner) { isExists ->
                     if(isExists) {
-                        Toast.makeText(requireContext(), "Email already exists", Toast.LENGTH_SHORT).show()
+                        if (!isFromSuccessRegister)
+                            Toast.makeText(requireContext(), "Email already exists", Toast.LENGTH_SHORT).show()
                     } else {
+                        isFromSuccessRegister = true
                         viewModel.register(user)
                         val intent = Intent(requireContext(), MainActivity::class.java)
                         startActivity(intent)

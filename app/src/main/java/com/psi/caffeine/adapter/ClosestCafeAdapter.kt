@@ -1,5 +1,6 @@
 package com.psi.caffeine.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +9,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.psi.caffeine.databinding.ItemListCafeVerticalBinding
 import com.psi.caffeine.model.Cafe
+import com.psi.caffeine.ui.detail.DetailActivity
 
 class ClosestCafeAdapter: RecyclerView.Adapter<ClosestCafeAdapter.ClosestCafeViewHolder>() {
     
@@ -30,6 +32,12 @@ class ClosestCafeAdapter: RecyclerView.Adapter<ClosestCafeAdapter.ClosestCafeVie
             view.tvDistance.text = cafe.distance.toString()
             view.tvRating.text = cafe.rating.toString()
             view.tvOpenCloseTime.text = "${cafe.openTime} - ${cafe.closeTime}"
+    
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DetailActivity::class.java)
+                intent.putExtra(DetailActivity.EXTRA_CAFE_ID, cafe.cafeId)
+                itemView.context.startActivity(intent)
+            }
         }
     }
     

@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.psi.caffeine.R
+import com.psi.caffeine.adapter.ClosestCafeAdapter
 import com.psi.caffeine.adapter.PromotionAdapter
 import com.psi.caffeine.adapter.RecommendationCafeAdapter
 import com.psi.caffeine.databinding.ActivityMainBinding
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         
         val promotionAdapter = PromotionAdapter()
         val recommendationAdapter = RecommendationCafeAdapter()
-        val closestCafeAdapter = RecommendationCafeAdapter()
+        val closestCafeAdapter = ClosestCafeAdapter()
     
         binding.apply {
             rvPromotion.adapter = promotionAdapter
