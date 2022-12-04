@@ -28,7 +28,7 @@
             android:fontFamily="@font/poppins_medium"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_cafe_name"
             tools:text="1.2 km" />
 
         <TextView

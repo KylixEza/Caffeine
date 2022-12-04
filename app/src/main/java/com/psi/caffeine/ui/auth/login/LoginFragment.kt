@@ -1,5 +1,6 @@
 package com.psi.caffeine.ui.auth.login
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,11 +10,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.commit
 import androidx.lifecycle.ViewModelProvider
+import com.jakewharton.rxbinding2.widget.RxTextView
 import com.psi.caffeine.R
 import com.psi.caffeine.admin_ui.home.AdminHomeActivity
 import com.psi.caffeine.databinding.FragmentLoginBinding
 import com.psi.caffeine.ui.auth.register.RegisterFragment
 import com.psi.caffeine.ui.main.MainActivity
+import io.reactivex.Observable
 
 class LoginFragment : Fragment() {
     
@@ -35,6 +38,8 @@ class LoginFragment : Fragment() {
         
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
         
+        validateInput()
+        
         binding?.apply {
             btnLogin.setOnClickListener {
                 val username = tilUsername.text.toString()
@@ -47,6 +52,8 @@ class LoginFragment : Fragment() {
                             activity?.finish()
                         } else {
                             val intent = Intent(activity, MainActivity::class.java)
+                            intent.putExtra(MainActivity.EXTRA_USERNAME, it.username)
+                            intent.putExtra(MainActivity.EXTRA_AVATAR, it.avatarUrl)
                             startActivity(intent)
                             activity?.finish()
                         }
@@ -68,6 +75,28 @@ class LoginFragment : Fragment() {
     override fun onDestroy() {
         _binding = null
         super.onDestroy()
+    }
+    
+    @SuppressLint("CheckResult")
+    private fun validateInput() {
+        val emptyUsername = RxTextView.textChanges(binding?.edtUsername?.editText!!)
+            .map { it.isEmpty() }
+        
+        val invalidPassword = RxTextView.textChanges(binding?.edtPassword?.editText!!)
+            .map { it.length < 6 }
+        
+        emptyUsername.subscribe {
+            binding?.tilUsername?.error = if (it) "Username cannot be empty" else null
+        }
+        
+        invalidPassword.subscribe {
+            binding?.tilPassword?.error = if (it) "Password must be at least 6 characters" else null
+        }
+        
+        Observable.combineLatest(emptyUsername, invalidPassword) { a, b -> !a && !b }
+            .subscribe {
+                binding?.btnLogin?.isEnabled = it
+            }
     }
     
 }

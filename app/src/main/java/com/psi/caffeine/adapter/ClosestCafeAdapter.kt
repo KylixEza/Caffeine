@@ -29,7 +29,7 @@ class ClosestCafeAdapter: RecyclerView.Adapter<ClosestCafeAdapter.ClosestCafeVie
                 .into(view.ivCafe)
             view.tvCafeName.text = cafe.cafeName
             view.tvLocation.text = cafe.location
-            view.tvDistance.text = cafe.distance.toString()
+            view.tvDistance.text = "${cafe.distance} km"
             view.tvRating.text = cafe.rating.toString()
             view.tvOpenCloseTime.text = "${cafe.openTime} - ${cafe.closeTime}"
     
