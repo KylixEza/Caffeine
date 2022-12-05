@@ -29,8 +29,8 @@ class AdminAddActivity : AppCompatActivity() {
                 description = binding.tilDescription.text.toString(),
                 location = "Jl Raya Kopo",
                 image = "",
-                rating = decimalFormat.format(Random.nextDouble(4.0, 5.0)).toDouble(),
-                distance = decimalFormat.format(Random.nextDouble(0.1, 5.0)).toDouble(),
+                rating = 4.2,
+                distance = 1.5,
                 openTime = "08:00",
                 closeTime = "23:00"
             )
